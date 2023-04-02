@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklibrephotos_docs=self.webpackChunklibrephotos_docs||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Development: 2023 - January / February","permalink":"/blog/welcome"}]}')}}]);
