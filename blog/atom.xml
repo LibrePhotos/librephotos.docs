@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.librephotos.com/blog</id>
     <title>LibrePhotos Blog</title>
-    <updated>2023-08-01T00:00:00.000Z</updated>
+    <updated>2023-09-15T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.librephotos.com/blog"/>
     <subtitle>LibrePhotos Blog</subtitle>
     <icon>https://docs.librephotos.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Development: 2023 - Week 36/37]]></title>
+        <id>https://docs.librephotos.com/blog/2023w37</id>
+        <link href="https://docs.librephotos.com/blog/2023w37"/>
+        <updated>2023-09-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I want to answer two questions: What is the best way to implement automatic image captioning, and what systems are the users of LibrePhotos using?]]></summary>
+        <content type="html"><![CDATA[<p>I want to answer two questions: What is the best way to implement automatic image captioning, and what systems are the users of LibrePhotos using?</p><p>Fill out this questionnaire, to help me out! <a href="https://forms.gle/vJjzxwpXf5vwTm9v9" target="_blank" rel="noopener noreferrer">https://forms.gle/vJjzxwpXf5vwTm9v9</a></p><p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: You can now choose a different geocoding provider (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>🚀 LibrePhotos: We now provide an image with GPU support. Follow these <a href="https://docs.librephotos.com/docs/installation/environment-variables/" target="_blank" rel="noopener noreferrer">instructions</a></li><li>✨ Frontend: You can now remove a face from a person in the ligthbox</li><li>✨ Frontend: You can now rename or remove a person in the face dashboard</li><li>✨ LibrePhotos: Removed startup warnings</li><li>✨ LibrePhotos: A lot of new and improved translations from the community</li><li>🔨 Frontend: Fixed the place tree</li><li>🔨 Frontend: Fixed a couple of issues when downloading server stats</li><li>🔨 Frontend: Refetch photodetails when generating a caption</li><li>🔨 LibrePhotos: Fixed more edge cases when reading face regions from exif</li><li>🔨 LibrePhotos: Fixed an issue, where the same face would be detected twice</li></ul><hr><p><strong>New Issues:</strong></p><ul><li>💡 Album tags (<a href="https://github.com/LibrePhotos/librephotos/issues/1009" target="_blank" rel="noopener noreferrer">Link</a>)</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>10</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2023 - August]]></title>
+        <id>https://docs.librephotos.com/blog/2023w35</id>
+        <link href="https://docs.librephotos.com/blog/2023w35"/>
+        <updated>2023-09-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I want to answer two questions: What is the best way to implement automatic image captioning and what systems are the users of LibrePhotos are using?]]></summary>
+        <content type="html"><![CDATA[<p>I want to answer two questions: What is the best way to implement automatic image captioning and what systems are the users of LibrePhotos are using?</p><p>Fill out this questionnaire, to help me out! <a href="https://forms.gle/vJjzxwpXf5vwTm9v9" target="_blank" rel="noopener noreferrer">https://forms.gle/vJjzxwpXf5vwTm9v9</a></p><p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: You can now export server stats</li><li>✨ Docs: New docs for photo list, exif fields, thumbnails, dev environment and delete feature</li><li>✨ Frontend / LibrePhotos: Updated a lot of dependencies</li><li>✨ LibrePhotos: Added an env to know the current version</li><li>✨ LibrePhotos: Add reasonableness check for filename parsed dates (Implemented by <a href="https://github.com/EricInBj" target="_blank" rel="noopener noreferrer">EricInBj</a>)</li><li>✨ LibrePhotos: Fix marking a favorite, when writing to sidecar was enabled (Implemented by <a href="https://github.com/XanderStrike" target="_blank" rel="noopener noreferrer">XanderStrike</a>)</li><li>✨ LibrePhotos: Remove deprecated endpoints</li><li>✨ LibrePhotos: New summary endpoint</li><li>✨ LibrePhotos: A lot of new and improved translations from the community</li><li>🔨 LibrePhotos: Fixed opening shared albums resulting in a blank page</li><li>🔨 LibrePhotos: Fixed empty names of persons</li><li>🔨 Frontend: Fixed the public photos page</li><li>🔨 Frontend: Fixed the social graph</li><li>🔨 Frontend: Fixed a case where the Sign-Up button would not appear</li><li>🔨 Frontend: Fix hover text in face dashboard</li><li>🔨 Frontend: Fix duration in album modal</li><li>🔨 Frontend: Fix user album deletion text</li><li>🔨 Frontend: Fix saving timestamps</li><li>🔨 LibrePhotos: Fixed an edge case in migration 0027</li><li>🔨 LibrePhotos: Fixed upload setting, when using prod</li><li>🔨 LibrePhotos: Fixed multiple edge cases when reading face regions from exif</li></ul><hr><p><strong>New Issues:</strong></p><ul><li>💡 Edit Person details - edit name (<a href="https://github.com/LibrePhotos/librephotos/issues/1002" target="_blank" rel="noopener noreferrer">Link</a>)</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>10</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Development: 2023 - July]]></title>
         <id>https://docs.librephotos.com/blog/2023w31</id>
