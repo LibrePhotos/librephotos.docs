@@ -19,9 +19,9 @@ models. Librephotos will also create a database and thumbnails, which will need 
 
 ### 🚀 Installation
 
-Clone the repo: `git clone https://github.com/LibrePhotos/librephotos-docker.git`
+Clone the repo: `git clone https://github.com/LibrePhotos/librephotos-docker.git librephotos`
 
-Navigate to the librephotos-docker folder: `cd librephotos-docker`
+Navigate to the librephotos-docker folder: `cd librephotos`
 
 Copy the template variable file (containing options such as the location of your photos): `cp librephotos.env .env`
 
@@ -45,7 +45,7 @@ Next, take a look at the [first steps after setup](../user-guide/first-steps.md)
 
 ### Updating
 
-To update LibrePhotos when using Docker Compose, navigate to the librephotos-docker folder that was created when you installed LibrePhotos.
+To update LibrePhotos when using Docker Compose, navigate to the librephotos folder that was created when you installed LibrePhotos.
 
 Then run:
 
