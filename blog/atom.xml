@@ -2,11 +2,250 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.librephotos.com/blog</id>
     <title>LibrePhotos Blog</title>
-    <updated>2024-04-02T00:00:00.000Z</updated>
+    <updated>2026-03-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.librephotos.com/blog"/>
     <subtitle>LibrePhotos Blog</subtitle>
     <icon>https://docs.librephotos.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - November to February]]></title>
+        <id>https://docs.librephotos.com/blog/2026w09</id>
+        <link href="https://docs.librephotos.com/blog/2026w09"/>
+        <updated>2026-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is a big one! A lot has changed since the last release. Here is an overview of all the new features, improvements and bug fixes.]]></summary>
+        <content type="html"><![CDATA[<p>This is a big one! A lot has changed since the last release. Here is an overview of all the new features, improvements and bug fixes.</p><p><strong>Upstream:</strong></p><p>🚀 LibrePhotos: Photo Stacks &amp; File Variants</p><p>Inspired by PhotoPrism, RAW+JPEG pairs and Live Photos are now treated as a single photo entity with multiple file variants, instead of creating separate entries. The scanner now uses a two-phase architecture: first grouping files by directory and basename, then processing each group together. A new repair job automatically merges any previously ungrouped file variants after each scan. This comes with a completely new UI for viewing and managing stacks, file variants in the lightbox sidebar, RAW badge overlays, and a unified organizing page for stacks and duplicates.</p><p>🚀 LibrePhotos: Duplicate Detection</p><p>A brand-new duplicate detection system using perceptual hashing! It detects exact copies via hash comparison and visual duplicates using a memory-efficient two-pass algorithm that works well even with very large collections. The API supports a batch_size parameter to fine-tune performance for your hardware.</p><p>🚀 LibrePhotos: Photo UUID Primary Key &amp; Structured Metadata</p><p>The Photo model's primary key has been changed from image_hash to UUID, which is a massive internal refactor touching models, APIs, serializers, background tasks, and tests. Alongside this, a new structured PhotoMetadata model with edit history has been added, enabling richer metadata management.</p><p>🚀 Frontend: Public Album Sharing Options</p><p>Public album sharing now supports fine-grained per-album settings. You can control the visibility of location, camera info, timestamps, captions, and faces for each shared album. Default sharing preferences can be configured in user settings, and individual albums can override them.</p><p>🚀 Frontend: Slideshow Mode</p><p>A new slideshow mode has been added to the lightbox with a configurable slide interval. Sit back and enjoy your photos!</p><p>🚀 Frontend: Explore Page</p><p>The navigation dropdown has been replaced with a dedicated explore page, giving you a much better overview of your albums, people, places, things and events at a glance.</p><p>🚀 Frontend: Redesigned Album &amp; Statistics Pages</p><p>The album page and all statistics/data visualization pages (face clusters, social graph, word clouds, timeline, place tree) have been completely redesigned with a fresh new look.</p><p>🚀 Frontend: Spotlight Search</p><p>A new spotlight search powered by Mantine replaces the old search bar, providing a faster and more intuitive search experience with keyboard navigation.</p><p>🚀 Frontend: Select All</p><p>You can now select all photos in a view for bulk operations like deleting, sharing, or adding to albums.</p><ul><li>✨ LibrePhotos: Switch from Photon to Nominatim as default reverse geocoding provider</li><li>✨ LibrePhotos: New endpoint for getting all albums for a photo</li><li>✨ LibrePhotos: Improved scan error handling and stack detection</li><li>✨ LibrePhotos: Split directory_watcher into a well-structured package with two-phase scan</li><li>✨ LibrePhotos: Social graph error logging improvements</li><li>✨ LibrePhotos: ARM CPU instruction set detection refactored and fixed</li><li>✨ LibrePhotos: Add SQLite support for UUID primary key migration</li><li>✨ Frontend: Fullscreen mode in lightbox</li><li>✨ Frontend: Switched to MapLibre GL with PhotoPrism tile server for all map views</li><li>✨ Frontend: Improved UX for setting photo location with geocode search</li><li>✨ Frontend: Improved UX for albums with cover picker and better album list view</li><li>✨ Frontend: New languages added to the UI</li><li>✨ Frontend: Improved first time setup experience and default empty state messages</li><li>✨ Frontend: File variants UI in photo details sidebar</li><li>✨ Frontend: Metadata section component in lightbox</li><li>✨ Frontend: Download options now include stacked/variant photos</li><li>✨ Frontend: Improved scrolling behavior</li><li>✨ Frontend: Extract inline styles into CSS modules (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ Frontend: Replaced airbnb ESLint config with eslint:recommended + prettier; removed unused dependencies (react-spring, react-vis, react-d3-graph)</li><li>✨ Frontend: Major dependency updates (jwt-decode v4, i18next v25, react-i18next v15, @tabler/icons-react v3, react-cookie v7, and more)</li><li>✨ Frontend: Replaced ReactPlayer with native video element for better video playback</li><li>✨ Docker: Remove SQLite data dir creation from entrypoint</li><li>🔨 LibrePhotos: Fix scan progress stuck below 100% when files are skipped or invalid (Implemented by <a href="https://github.com/Nikoh77" target="_blank" rel="noopener noreferrer">Nikoh77</a>)</li><li>🔨 LibrePhotos: Fix scan job not being marked as finished when no files need processing (Implemented by <a href="https://github.com/Nikoh77" target="_blank" rel="noopener noreferrer">Nikoh77</a>)</li><li>🔨 LibrePhotos: Fix bugs when not having any data</li><li>🔨 LibrePhotos: Fix big thumbnail content type for proxied responses (<a href="https://github.com/LibrePhotos/librephotos/issues/1271" target="_blank" rel="noopener noreferrer">#1271</a>)</li><li>🔨 LibrePhotos: Fix social graph SQL query to work with UUID primary key</li><li>🔨 LibrePhotos: Fix UnboundLocalError in face extraction from dlib</li><li>🔨 LibrePhotos: Fix pagination crash with negative page_size</li><li>🔨 Frontend: Fix video playback issues in lightbox</li><li>🔨 Frontend: Fix photo list flickering</li><li>🔨 Frontend: Fix server stats parsing for CPU info fields</li><li>🔨 Frontend: Fix upload issues with sequential file uploads and query invalidation</li><li>🔨 Frontend: Fix number of deleted images when selecting all</li><li>🔨 Frontend: Fix face dashboard issues and face mutation hooks</li><li>🔨 Frontend: Fix issues with shared by me albums view</li><li>🔨 Frontend: Fix memory hog issue</li><li>🔨 Frontend: Fix login popup messages</li><li>✨ Frontend: Fix ESLint errors (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>3</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - September and October]]></title>
+        <id>https://docs.librephotos.com/blog/2025w44</id>
+        <link href="https://docs.librephotos.com/blog/2025w44"/>
+        <updated>2025-11-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Breaking change change your volume mount path!]]></summary>
+        <content type="html"><![CDATA[<p><strong>Breaking change:</strong> Postgres v18+: change your volume mount path!</p><p>With Postgres v18+, mounting a volume to <code>/var/lib/postgresql/data</code> can fail in Docker/Kubernetes due to an upstream change that enforces a new data directory (<code>/var/lib/postgresql/MAJOR/docker</code>) and adds a symlink from <code>/var/lib/postgresql/data</code> to <code>/var/lib/postgresql</code> (<a href="https://github.com/docker-library/postgres/pull/1259" target="_blank" rel="noopener noreferrer">details</a>).</p><p><strong>Action required:</strong> Mount your volume to <code>/var/lib/postgresql</code> instead. <code>pgautoupgrade</code> will detect any existing data there and migrate it to the new structure (discussion: <a href="https://github.com/pgautoupgrade/docker-pgautoupgrade/issues/164" target="_blank" rel="noopener noreferrer">pgautoupgrade#164</a>).</p><p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos/Frontend: You can now edit GPS locations</li><li>✨ Frontend: Upgraded to Mantine 8.3 and fixed linting errors (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ LibrePhotos: Using Argon2PasswordHasher for new and updated accounts for faster authentication</li><li>🔨 LibrePhotos: Handle empty recently added photo queries</li><li>🔨 LibrePhotos: Fix BLIP on newer versions of librephotos</li><li>🔨 LibrePhotos: Fix proxy redirects for non-ASCII original photo paths</li><li>🔨 LibrePhotos: Fix LLM models downloading even when none was selected</li><li>🔨 Frontend: Fix a bug when uploading images</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - July and August]]></title>
+        <id>https://docs.librephotos.com/blog/2025w35</id>
+        <link href="https://docs.librephotos.com/blog/2025w35"/>
+        <updated>2025-08-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 Docker: You can now launch LibrePhotos as a single container with docker with the "librephotos-unified:latest" image</li><li>🚀 LibrePhotos: Public sharing via link for albums</li><li>🚀 LibrePhotos: Folder navigation view + pagination &amp; aggregated photo counts for subfolders</li><li>✨ Docker: use native runners instead of emulation</li><li>✨ Frontend: Breadcrumb Path in detail views, and infinite scroll for subfolders</li><li>✨ LibrePhotos: fewer queries in several views (perf pass)</li><li>✨ LibrePhotos: Multiple fixes in order to make sqllite work</li><li>✨ Frontend: Improved deletion dialog; centered login title;</li><li>🔨 LibrePhotos: fix n+1 on delete; fix trash view; migration stability for missing image paths</li><li>🔨 Frontend: fix GIFs in viewer; fix no-timestamp errors</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - June]]></title>
+        <id>https://docs.librephotos.com/blog/2025w28</id>
+        <link href="https://docs.librephotos.com/blog/2025w28"/>
+        <updated>2025-07-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>✨ Docs: Update upload documentation to clarify scan directory requirements and remove heavyweight process setting</li><li>🔨 LibrePhotos: Fixed scanning of videos by fixing an issue with calculating aspect ratios (<a href="https://github.com/LibrePhotos/librephotos/issues/1587" target="_blank" rel="noopener noreferrer">#1587</a>)</li><li>🔨 LibrePhotos: Fixed scanning media from nextcloud (Implemented by <a href="https://github.com/varet80" target="_blank" rel="noopener noreferrer">varet80</a>)</li><li>🔨 Frontend: Fix cache invalidation issues in FaceDashboard (<a href="https://github.com/LibrePhotos/librephotos/issues/1586" target="_blank" rel="noopener noreferrer">#1586</a>)</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - May]]></title>
+        <id>https://docs.librephotos.com/blog/2025w24</id>
+        <link href="https://docs.librephotos.com/blog/2025w24"/>
+        <updated>2025-05-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><p>🚀 Backend: Added Moondream 2 for caption generation</p><p>The backend integrated the Moondream 2 model (via llama-cpp-python) for image+text analysis, marking images as multi-modal inputs. This lays groundwork for more advanced AI features like richer automatic captions or visual queries by allowing the AI to handle both image and text together.</p><p>✨ Frontend: Keyboard shortcuts in Lightbox</p><p>You can now use keyboard shortcuts in the lightbox to navigate photos, toggle the info sidebar, and even delete images – all without touching the mouse! Helpful tooltips have been added to the UI to remind you of these new shortcuts</p><p>Smaller things:</p><ul><li>✨ Backend: Refactored photo captioning and search</li><li>✨ Backend: Resolved some noisy logger warnings (Implemented by <a href="https://github.com/emmanuel-ferdman" target="_blank" rel="noopener noreferrer">emmanuel-ferdman</a>)</li><li>🔨 Backend: Normal users can now create albums again</li><li>✨ Frontend: It is now possible to delete images from the lightbox</li><li>🔨 Frontend: Fixed the download photos action</li><li>🔨 Frontend: Fixed the places tree page</li><li>🔨 Frontend: Fixed mobile view of photos</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - April]]></title>
+        <id>https://docs.librephotos.com/blog/2025w20</id>
+        <link href="https://docs.librephotos.com/blog/2025w20"/>
+        <updated>2025-05-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 Frontend: Switched from RTK Query and Redux to Tanstack Query</li></ul><p>The syntax of RTK Query was difficult to work with, and Redux introduced unnecessary complexity for our needs. With TanStack Query, data fetching feels much more natural and removes the need for boilerplate like slices or global state management for async data.</p><ul><li>🚀 Frontend: Switched from React Router to Tanstack Router</li></ul><p>Switching to TanStack Router improves consistency with TanStack Query, enables typesafe URL-based state management, and supports powerful features like intent-based fetching — all with deeper integration options out of the box.</p><ul><li>✨ Frontend: Overhauled Face Dashboard controls</li><li>✨ Frontend: Add keyboard navigation to the lightbox</li><li>✨ LibrePhotos: Disable password change on demo site (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ LibrePhotos: Extracted a thumbnail model from the photo model</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li><li>🔨 Frontend: Fixed a lot of small issues</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2025 - March]]></title>
+        <id>https://docs.librephotos.com/blog/2025w16</id>
+        <link href="https://docs.librephotos.com/blog/2025w16"/>
+        <updated>2025-03-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: You can now download the logs from the admin dashboard</li><li>🚀 Frontend: You can now drag images around in the light box</li><li>🚀 Frontend: Similar images can now be clicked and viewed on a new single photo page</li><li>✨ LibrePhotos: Faster import of photos (Implemented by <a href="https://github.com/transorsmth" target="_blank" rel="noopener noreferrer">Ava</a>)</li><li>✨ Frontend: Use Mantine tree and removed a dependency</li><li>✨ Frontend: You can now set any value for the size of the images</li><li>✨ Frontend: Light / Dark mode got moved to the header instead</li><li>🔨 LibrePhotos: Uploaded files now get checked, if they are supported, before saving them</li><li>🔨 Docker: httpPort should now work, when set in .env</li><li>🔨 Frontend: Auto albums should be visible now, even when the title is missing</li><li>🔨 Frontend: Fixed rendering of the captions box in the light box</li><li>🔨 Frontend: Fixed an issue where the notification would appear below the viewport</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>2</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - December]]></title>
+        <id>https://docs.librephotos.com/blog/2025w01</id>
+        <link href="https://docs.librephotos.com/blog/2025w01"/>
+        <updated>2025-01-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: Upgrade to Mantine 7 (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ Frontend: Improved search functionality (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>✨ Docker: GPU image is now 35% smaller (8,72GB → 5,5GB)</li><li>🔨 Frontend: Motion photos should be visible now</li><li>🔨 Frontend: Fixed selection of mistral model in admin dashboard</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>5</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hotfix GPU Image]]></title>
+        <id>https://docs.librephotos.com/blog/2025w02</id>
+        <link href="https://docs.librephotos.com/blog/2025w02"/>
+        <updated>2025-01-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ARM is no longer an option for the GPU image.]]></summary>
+        <content type="html"><![CDATA[<p>ARM is no longer an option for the GPU image.</p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - Week 46/47]]></title>
+        <id>https://docs.librephotos.com/blog/2024w47</id>
+        <link href="https://docs.librephotos.com/blog/2024w47"/>
+        <updated>2024-11-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 Docker: Use pgautoupgrade/pgautoupgrade to use latest postgres</li><li>✨ LibrePhotos: Remove heavyweight process setting</li><li>🔨 LibrePhotos: Fix xss file upload vulnerability (Found and fixed by <a href="https://github.com/ii5mai1" target="_blank" rel="noopener noreferrer">ii5mai1</a>)</li><li>🔨 Docker: Remove postgres setting that can lead to a corrupt db in certain scenarios</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>6</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - October]]></title>
+        <id>https://docs.librephotos.com/blog/2024w45</id>
+        <link href="https://docs.librephotos.com/blog/2024w45"/>
+        <updated>2024-11-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: Reintroduce Classification</li></ul><p>This change aims to reintroduce classification, while keeping the current clustering intact. Clustering was chosen, because it works well in a cold start scenario, where the user does not have any persons. Common problems with clustering are that there is no way to only match faces to known persons, and that previous input does not improve the clustering results. Classification should solve this problem! Instead of finding all the clusters, classification will match all unknown faces with already known persons instead.</p><ul><li>✨ LibrePhotos: Faces are now only soft deleted</li><li>✨ LibrePhotos: All cluster and classification probabilities are now saved</li><li>✨ Frontend: New Light box for viewing images</li><li>✨ Frontend: You can now delete faces from the lightbox</li><li>✨ Frontend: Hovering over a name in the sidebar, will outline the face</li><li>✨ Frontend: There is now a separate "Unknown" section in the face dashboard</li><li>✨ Frontend: Inferred faces are now the first tab, instead of the last</li><li>✨ Frontend: New filter for viewing cluster or classifications</li><li>✨ Frontend: New filter for label probability</li><li>✨ Frontend: Photo details now return, if the face was inferred or labelled and the probability</li><li>✨ Frontend: The face of the person and the old name are now visible when renaming</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>7</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - September]]></title>
+        <id>https://docs.librephotos.com/blog/2024w40</id>
+        <link href="https://docs.librephotos.com/blog/2024w40"/>
+        <updated>2024-10-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🔨 Frontend: Blacklist auth tokens on logout (<a href="https://zeropath.com/" target="_blank" rel="noopener noreferrer">Found by ZeroPath's Beta Business Logic scanner</a>)</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li><li>✨ LibrePhotos: New auth token blacklist endpoint (<a href="https://zeropath.com/" target="_blank" rel="noopener noreferrer">Found by ZeroPath's Beta Business Logic scanner</a>)</li><li>✨ LibrePhotos: Enhanced support for UhuruPhotos by expanding the PhotoSummary endpoints with additional fields. If you're using the UhuruPhotos app, be sure to update your LibrePhotos instance to ensure compatibility, as older versions will not work with the latest app update.</li></ul><p><strong>Upcoming:</strong></p><p>I know, that not that many things got shipped this month, so here is an overview of things to come next month:</p><p><a href="https://github.com/LibrePhotos/librephotos/pull/1418" target="_blank" rel="noopener noreferrer">Reintroduce Face Classification</a></p><p>This pull request aims to reintroduce classification, while keeping the current clustering intact. Clustering was chosen, because it works well in a cold start scenario, where the user does not have any persons. Common problems with clustering are that there is no way to only match faces to known persons, and that previous input does not improve the clustering results. Classification should solve this problem for large datasets, where all persons are already known and it respects previous user input. Due to the large scale of this change, this was not ready for shipping yet.</p><p><a href="https://github.com/LibrePhotos/librephotos-frontend/pull/529" target="_blank" rel="noopener noreferrer">Upgrade to Mantine 7</a>:</p><p>As a component library, we use Mantine, which had a big version jump to version 7. This version removes emotion for styles and improves SSR capabilities while adding a lot of new components. However, due to the switch from emotion to native CSS and huge list of things that need to migrated, this took longer then expected.</p><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>6</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - August]]></title>
+        <id>https://docs.librephotos.com/blog/2024w36</id>
+        <link href="https://docs.librephotos.com/blog/2024w36"/>
+        <updated>2024-08-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🔨 LibrePhotos GPU: Fixed build issues</li><li>🔨 LibrePhotos: Fixed an issue where it was possible to upload images with authentication</li><li>🔨 LibrePhotos: Fix path traversal issue when uploading an image (Fixed by <a href="https://github.com/adventure8812" target="_blank" rel="noopener noreferrer">adventure8812</a>)</li><li>🔨 Frontend: Fix removing missing photos</li><li>🔨 Frontend: Tokens will now be saved in the cookies instead of session storage</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li><li>✨ LibrePhotos: Photos are now soft removed in order to improve the last modified query parameter for album date endpoints. Images in trash can now return "in_trashcan=true" and removed images are called "deleted=true"</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>8</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - July]]></title>
+        <id>https://docs.librephotos.com/blog/2024w32</id>
+        <link href="https://docs.librephotos.com/blog/2024w32"/>
+        <updated>2024-08-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🔨 Mobile: Fixed icons</li><li>🔨 Mobile: Fixed uploading</li><li>🔨 Frontend: Fixed admin settings</li><li>🔨 Frontend: Fixed "Page not found" error in face dashboard</li><li>✨ Mobile: Increased the numbers of images fetch from photo roll</li><li>✨ Mobile: Build up-to-date version</li><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li><li>✨ LibrePhotos: Add last modified query parameter for album date endpoints</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>8</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - June]]></title>
+        <id>https://docs.librephotos.com/blog/2024w28</id>
+        <link href="https://docs.librephotos.com/blog/2024w28"/>
+        <updated>2024-07-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🚀 LibrePhotos: Split up scan job in smaller tasks</li></ul><p>This is a pretty big change. Instead of doing all the work for each image, we will now prioritize creating a thumbnail and making the image visible in the UI and pushing other tasks like looking for faces or generating tags later.</p><ul><li>✨ LibrePhotos: Updated dependencies and updated language strings from the community</li><li>✨ LibrePhotos API: Job progress is now reported slightly different</li><li>✨ LibrePhotos/Frontend: Merge minor versions automatically</li><li>✨ LibrePhotos: Default background worker is now the number of cores of the host system</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>8</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - May]]></title>
+        <id>https://docs.librephotos.com/blog/2024w23</id>
+        <link href="https://docs.librephotos.com/blog/2024w23"/>
+        <updated>2024-06-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><ul><li>🔨 Frontend: Fix GPS issues on map view (Implemented by <a href="https://github.com/CodingGhost" target="_blank" rel="noopener noreferrer">CodingGhost</a>)</li><li>🔨 LibrePhotos: Fix possible auth confusion, because of multiple token types</li><li>🔨 LibrePhotos: Ensure that models are downloaded when using multiple workers</li><li>🔨 LibrePhotos: Downloading an original image will now have the correct filename</li><li>🔨 LibrePhotos: Close and restart services more reliably</li><li>✨ LibrePhotos: Updated a bunch of dependencies and updated language strings from the community</li><li>✨ LibrePhotos: Add person, file type, lens, camera and path to search caption</li><li>✨ LibrePhotos: Added mistral v2 as LLM option</li><li>✨ LibrePhotos: Improved API speed by persisting database connections</li><li>✨ LibrePhotos: Recycle workers, when they exceed RAM limit</li><li>✨ LibrePhotos: Improve RAM usage after scanning by unloading unused services</li><li>✨ LibrePhotos: Extract places365 to new service</li><li>✨ LibrePhotos: Improved speed, due to new exif service</li><li>🚀 Frontend: Migration to redux toolkit is now done (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>7</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - April]]></title>
+        <id>https://docs.librephotos.com/blog/2024w18</id>
+        <link href="https://docs.librephotos.com/blog/2024w18"/>
+        <updated>2024-05-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Upstream:]]></summary>
+        <content type="html"><![CDATA[<p><strong>Upstream:</strong></p><p>✨ LibrePhotos: Improved service management
+The services now get started with Django and there is a cron job, which checks if the service is still running. There are now a bunch of new endpoints for handling services.
+<!-- -->[GET]<!-- --> /services/: List all services
+<!-- -->[GET]<!-- --> /services/{id}/: Retrieve the health status of a service
+<!-- -->[POST]<!-- --> /services/{id}/start/: Start a service
+<!-- -->[POST]<!-- --> /services/{id}/stop/: Stop a service</p><ul><li>🔨 LibrePhotos: Do not download model, if "none" is selected</li><li>🔨 LibrePhotos: Chain download and dependents together</li><li>🔨 Frontend: Fix updating avatar (Implemented by <a href="https://github.com/sickelap" target="_blank" rel="noopener noreferrer">sickelap</a>)</li><li>🔨 Frontend: Always show header, even when there are no images</li><li>✨ Docker: Updated to Ubuntu 24.04 and removed build tools</li><li>✨ LibrePhotos: Updated a bunch of dependencies and updated language strings from the community</li></ul><hr><p>If you are interested on how I develop this application, you can watch me develop features live on <strong><a href="https://www.youtube.com/channel/UCZJ2pk2BPKxwbuCV9LWDR0w" target="_blank" rel="noopener noreferrer">my channel</a></strong></p><hr><p><strong>Sponsoring development:</strong></p><p>My work is sponsored by <strong>7</strong> awesome people!</p><p>If you like the work I do, then you can support me via <strong><a href="https://github.com/sponsors/derneuere" target="_blank" rel="noopener noreferrer">GitHub sponsors</a></strong> or via <strong><a href="https://www.paypal.com/donate/?hosted_button_id=5JWVM2UR4LM96" target="_blank" rel="noopener noreferrer">PayPal</a></strong></p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Development: 2024 - March Hotfix 1]]></title>
+        <id>https://docs.librephotos.com/blog/2024w14p1</id>
+        <link href="https://docs.librephotos.com/blog/2024w14p1"/>
+        <updated>2024-04-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fixed issues with DRF]]></summary>
+        <content type="html"><![CDATA[<p>Fixed issues with DRF</p>]]></content>
+        <author>
+            <name>Niaz Faridani-Rad</name>
+            <uri>https://github.com/derneuere</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Development: 2024 - March]]></title>
         <id>https://docs.librephotos.com/blog/2024w14</id>
