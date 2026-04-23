@@ -1,41 +1,19 @@
-# LibrePhotos Docs
+# 📦 librephotos.docs (archived)
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+> **This repository has been merged into [LibrePhotos/librephotos](https://github.com/LibrePhotos/librephotos).**
+>
+> The Docusaurus site source now lives at **[`apps/docs/`](https://github.com/LibrePhotos/librephotos/tree/dev/apps/docs)** in the monorepo, and is published from the monorepo's `gh-pages` branch.
 
-### Installation
+The site itself is unchanged: **https://docs.librephotos.com** — same URL, same content, deployed from the new location.
 
-```
-$ yarn
-```
+## Where things moved
 
-### Local Development
+| You used to do… | Now do… |
+|---|---|
+| `git clone https://github.com/LibrePhotos/librephotos.docs.git && cd librephotos.docs && yarn start` | `git clone https://github.com/LibrePhotos/librephotos.git && cd librephotos/apps/docs && yarn start` |
+| Click "Edit this page" on a doc | Now opens an edit URL under [`librephotos/tree/dev/apps/docs/`](https://github.com/LibrePhotos/librephotos/tree/dev/apps/docs) |
+| Open issues here | Open them on [LibrePhotos/librephotos](https://github.com/LibrePhotos/librephotos/issues) with the `docs` label |
 
-```
-$ yarn start
-```
+Full commit history is preserved under `apps/docs/` in the monorepo.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Background: [issue #534](https://github.com/LibrePhotos/librephotos/issues/534).
